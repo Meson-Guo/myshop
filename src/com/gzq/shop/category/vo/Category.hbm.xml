@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.gzq.shop.category.vo.Category" table="category">
+ 		<id name="cid">
+ 			<generator class="native"/>
+ 		</id>
+ 		<property name="cname"/>
+ 		<!--二级分类的配置集合  -->
+ 		<set order-by="csid" name="categorySeconds" lazy="false">
+ 			<key column="cid"/>
+ 			<one-to-many class="com.gzq.shop.categorysecond.vo.CategorySecond"/>
+ 		</set>
+ 	 </class>
+ </hibernate-mapping>  

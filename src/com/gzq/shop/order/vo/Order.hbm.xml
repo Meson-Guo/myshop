@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.gzq.shop.order.vo.Order" table="orders">
+	<id name="oid">
+	<generator class="native"></generator>
+	</id>
+	<property name="total"></property>
+	<property name="ordertime"></property>
+	<property name="name"></property>
+	<property name="phone"></property>
+	<property name="addr"></property>
+	<property name="state"></property>
+	<many-to-one name="user" lazy="false" class="com.gzq.shop.user.vo.User" column="uid"/>
+	
+	<set name="orderItems" lazy="false" cascade="save-update">
+		<key column="oid"></key>
+		<one-to-many class="com.gzq.shop.order.vo.OrderItem"/>
+	</set>
+	</class>
+</hibernate-mapping>

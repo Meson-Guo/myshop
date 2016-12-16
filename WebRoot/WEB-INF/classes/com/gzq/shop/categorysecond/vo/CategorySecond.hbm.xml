@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.gzq.shop.categorysecond.vo.CategorySecond" table="categorysecond">
+ 		<id name="csid">
+ 			<generator class="native"/>
+ 		</id>
+ 		<property name="csname"/>
+ 		<!-- 二级与一级 -->
+ 		<many-to-one name="category" class="com.gzq.shop.category.vo.Category" column="cid"></many-to-one>
+ 		<set name="products" lazy="false">
+ 			<key column="csid"/>
+ 			<one-to-many class="com.gzq.shop.product.vo.Product"/>
+ 		</set>
+ 	 </class>
+ </hibernate-mapping>  
