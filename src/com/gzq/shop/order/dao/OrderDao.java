@@ -68,10 +68,10 @@ public class OrderDao extends HibernateDaoSupport{
 		return 0;
 	}
 
-	public List<Order> findByPage(int begin, int limit) {
+	public List<Order> findByPage(int startIndex, int pageSize) {
 		// TODO Auto-generated method stub
 		String  hql="from Order order by oid desc";
-		List<Order> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Order>(hql, null, begin, limit));
+		List<Order> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Order>(hql, null, startIndex, pageSize));
 		return list;
 	}
 

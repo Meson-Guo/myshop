@@ -170,7 +170,7 @@
 												<span><s:fielderror fieldName="addr"/></span>
 										</td>
 									</tr>
-								<tr>
+								<%-- <tr>
 									<th>
 										<span class="requiredField">*</span>验证码:
 									</th>
@@ -179,7 +179,7 @@
 											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码">
 										</span>
 									</td>
-								</tr>
+								</tr> --%>
 							<tr>
 								<th>&nbsp;
 									

@@ -19,11 +19,11 @@ public class CategorySecondDao extends HibernateDaoSupport {
 		return 0;
 	}
 
-	public List<CategorySecond> findByPage(int begin, int limit) {
+	public List<CategorySecond> findByPage(int startIndex, int pageSize) {
 		// TODO Auto-generated method stub
 		String hql="from CategorySecond  cs order by cs.csid desc";
 		List<CategorySecond> list=this.getHibernateTemplate().
-				execute(new PageHibernateCallback<CategorySecond>(hql, new Object[]{}, begin, limit));
+				execute(new PageHibernateCallback<CategorySecond>(hql, new Object[]{}, startIndex, pageSize));
 		if(list!=null&&list.size()>0){
 			return list;
 		}

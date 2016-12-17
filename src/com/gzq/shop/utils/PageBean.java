@@ -6,7 +6,7 @@ public class PageBean<T> {
 	private int page;
 	private int totalCount;
 	private int totalPage;
-	private int limit;
+	private int pageSize;
 	private List<T> list;
 	public int getPage() {
 		return page;
@@ -26,11 +26,11 @@ public class PageBean<T> {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
-	public int getLimit() {
-		return limit;
+	public int getPageSize() {
+		return pageSize;
 	}
-	public void setLimit(int limit) {
-		this.limit = limit;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 	public List<T> getList() {
 		return list;

@@ -30,19 +30,19 @@ public class OrderService {
 		// TODO Auto-generated method stub
 		PageBean<Order> pageBean=new PageBean<Order>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=0;
 	
 		totalCount=orderDao.findCountUid(uid);
 		System.out.println("totalCount:"+totalCount);
 		pageBean.setTotalCount(totalCount);
 		int totalPage=0;
-		totalPage=(int) Math.ceil(totalCount / limit);
+		totalPage=(int) Math.ceil(totalCount / pageSize);
 		pageBean.setTotalPage(totalPage);
-		int begin=(page-1)*limit;
+		int begin=(page-1)*pageSize;
 		
-		List<Order> list=orderDao.findByPageUid(uid,begin,limit);
+		List<Order> list=orderDao.findByPageUid(uid,begin,pageSize);
 		
 		pageBean.setList(list);
 		return pageBean;
@@ -75,21 +75,21 @@ public class OrderService {
 		// TODO Auto-generated method stub
 		PageBean<Order> pageBean=new PageBean<Order>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=0;
 		totalCount=orderDao.findCount();
 		pageBean.setTotalCount(totalCount);
 		int totalPage=0;
-		if((totalCount%limit)==0){
-		totalPage=(totalCount / limit)+1;
+		if((totalCount%pageSize)==0){
+		totalPage=(totalCount / pageSize)+1;
 		}else{
-			totalPage=(totalCount / limit);
+			totalPage=(totalCount / pageSize);
 		}
 		pageBean.setTotalPage(totalPage);
-		int begin=0;
-		begin=(page-1)*limit;
-		List<Order> list=orderDao.findByPage(begin, limit);
+		int startIndex=0;
+		startIndex=(page-1)*pageSize;
+		List<Order> list=orderDao.findByPage(startIndex, pageSize);
 		pageBean.setList(list);
 		return pageBean;
 	}

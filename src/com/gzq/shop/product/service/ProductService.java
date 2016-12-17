@@ -38,19 +38,19 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		PageBean<Product> pageBean=new PageBean<Product>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=71;
 		System.out.println("****gzq***");
 		totalCount=productDao.findCountCid(cid);
 		System.out.println("totalCount:"+totalCount);
 		pageBean.setTotalCount(totalCount);
 		int totalPage=0;
-		totalPage=(int) Math.ceil(totalCount / limit);
+		totalPage=(int) Math.ceil(totalCount / pageSize);
 		pageBean.setTotalPage(totalPage);
-		int begin=(page-1)*limit;
+		int startIndex=(page-1)*pageSize;
 		System.out.println("****123***");
-		List<Product> list=productDao.findByPageCid(cid,begin,limit);
+		List<Product> list=productDao.findByPageCid(cid,startIndex,pageSize);
 		System.out.println("****zsy***");
 		pageBean.setList(list);
 		return pageBean;
@@ -60,19 +60,19 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		PageBean<Product> pageBean=new PageBean<Product>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=0;
 		System.out.println("****gzq***");
 		totalCount=productDao.findCountCsid(csid);
 		System.out.println("totalCount:"+totalCount);
 		pageBean.setTotalCount(totalCount);
 		int totalPage=0;
-		totalPage=(int) Math.ceil(totalCount / limit);
+		totalPage=(int) Math.ceil(totalCount / pageSize);
 		pageBean.setTotalPage(totalPage);
-		int begin=(page-1)*limit;
+		int startIndex=(page-1)*pageSize;
 		System.out.println("****123***");
-		List<Product> list=productDao.findByPageCsid(csid,begin,limit);
+		List<Product> list=productDao.findByPageCsid(csid,startIndex,pageSize);
 		System.out.println("****zsy***");
 		pageBean.setList(list);
 		return pageBean;
@@ -83,21 +83,21 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		PageBean<Product> pageBean=new PageBean<Product>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=0;
 		totalCount=productDao.findCount();
 		pageBean.setTotalCount(totalCount);
 		int totalPage=0;
-		if((totalCount%limit)==0){
-			totalPage=totalCount / limit;
+		if((totalCount%pageSize)==0){
+			totalPage=totalCount / pageSize;
 		}else{
-			totalPage=totalCount / limit +1;
+			totalPage=totalCount / pageSize +1;
 		}
 		pageBean.setTotalPage(totalPage);
-		int begin=0;
-		begin=(page-1)*limit;
-		List<Product> list=productDao.findByPage( begin, limit);
+		int startIndex=0;
+		startIndex=(page-1)*pageSize;
+		List<Product> list=productDao.findByPage( startIndex, pageSize);
 		pageBean.setList(list);
 		return pageBean;
 	}

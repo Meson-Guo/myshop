@@ -142,14 +142,19 @@
 	<property name="categorySecondService" ref="categorySecondService"></property>
 		<property name="categoryService" ref="categoryService"></property>
 	</bean>
-	
+	<!--后台订单管理action  -->
 	<bean id="adminOrderAction" class="com.gzq.shop.order.adminaction.AdminOrderAction" scope="prototype">
 	<property name="orderService" ref="orderService"></property>
 	</bean>
 	
-	
+	<!--后台物品管理action  -->
 	<bean id="adminProductAction" class="com.gzq.shop.product.adminaction.AdminProductAction" scope="prototype">
 	<property name="productService" ref="productService"></property>
 	<property name="categorySecondService" ref="categorySecondService"></property>
 	</bean>
+	
+	<!--后台用户管理action  -->
+		<bean id="userAdminAction" class="com.gzq.shop.user.adminaction.UserAdminAction">
+		<property name="userService" ref="userService"></property>
+		</bean>
 </beans>

@@ -49,12 +49,12 @@ public class ProductDao extends HibernateDaoSupport{
 		return 0;
 	}
 
-	public List<Product> findByPageCid(Integer cid, int begin, int limit) {
+	public List<Product> findByPageCid(Integer cid, int startIndex, int pageSize) {
 		// select p.* from category c, product p, categorysecond cs where p.csid = cs.csid and cs.cid = c.cid and c.cid=1;
 		//String hqlString="select p from Category c,Product p,CategorySecond cs where c.cid=cs.category.cid and cs.csid=categorySecond.csid and c.cid=?";
 		String hql="select p from Product p join p.categorySecond cs join cs.category c where c.cid =?";
 		//分页的第二种方式，
-		 List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{cid}, begin, limit));
+		 List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{cid}, startIndex, pageSize));
 		 if(list!=null&&list.size()>0){
 			 return list;
 		 }
@@ -71,10 +71,10 @@ public class ProductDao extends HibernateDaoSupport{
 		return 0;
 	}
 
-	public List<Product> findByPageCsid(Integer csid, int begin, int limit) {
+	public List<Product> findByPageCsid(Integer csid, int startIndex, int pageSize) {
 		// TODO Auto-generated method stub
 		String hql="select p from Product p join p.categorySecond cs where cs.csid=? ";
-		List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{csid}, begin, limit));
+		List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{csid}, startIndex, pageSize));
 		if(list!=null&&list.size()>0){
 			return list;
 		}
@@ -91,10 +91,10 @@ public class ProductDao extends HibernateDaoSupport{
 		return 0;
 	}
 
-	public List<Product> findByPage(int begin, int limit) {
+	public List<Product> findByPage(int startIndex, int pageSize) {
 		// TODO Auto-generated method stub
 		String hql="from Product order by pid desc";
-		List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, null, begin, limit));
+		List<Product> list=this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, null, startIndex, pageSize));
 		if(list!=null&&list.size()>0){
 			return list;
 		}

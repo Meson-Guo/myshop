@@ -22,15 +22,15 @@ public class CategorySecondService {
 		// TODO Auto-generated method stub
 		PageBean<CategorySecond> pageBean=new PageBean<CategorySecond>();
 		pageBean.setPage(page);
-		int limit=8;
-		pageBean.setLimit(limit);
+		int pageSize=8;
+		pageBean.setPageSize(pageSize);
 		int totalCount=0;
 		totalCount=categorySecondDao.findCount();
 		pageBean.setTotalCount(totalCount);
-		int totalPage=(int) Math.ceil(totalCount / limit);
+		int totalPage=(int) Math.ceil(totalCount / pageSize);
 		pageBean.setTotalPage(totalPage);
-		int begin=(page-1)*limit;
-		List<CategorySecond> list=categorySecondDao.findByPage(begin,limit);
+		int startIndex=(page-1)*pageSize;
+		List<CategorySecond> list=categorySecondDao.findByPage(startIndex,pageSize);
 		pageBean.setList(list);
 		return pageBean;
 	}
